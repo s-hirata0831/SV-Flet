@@ -2,6 +2,12 @@
     <img src="https://github.com/s-hirata0831/SV-Flet/blob/main/doc/SV-Flet.png?raw=true">
 </div>
 
+<div align="center">
+<img src="https://img.shields.io/badge/license-MIT-blue.svg?maxAge=43200">
+<img src="https://img.shields.io/badge/-Python-F9DC3E.svg?logo=python&style=flat">
+<img src="https://img.shields.io/badge/-GitHub-181717.svg?logo=github&style=flat">
+</div>
+
 <h2 align="center">
     SV-Flet
 </h2>
