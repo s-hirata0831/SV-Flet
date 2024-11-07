@@ -21,7 +21,7 @@ StageVisualizer-(By)Flet の略です。
 
 ## RecentlyVersion
 
-現段階のリリースバージョンは v1.0.0 です。
+現段階のリリースバージョンは v1.0.0 です。  
 リリース＆main ブランチに表示されているイベント：[+PLAZA FES2024](https://plazafes2024.studio.site/)
 
 ### vX.Y.Z の割り当て
