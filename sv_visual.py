@@ -202,14 +202,14 @@ def main(page: ft.Page):
         page.go("/2")
 
     def update_data():
-
+        
         #ページを更新
         page.update()
 
-    #6秒ごとにデータを更新
+    #0.5秒ごとにデータを更新
     def periodic_update():
         update_data()
-        threading.Timer(6, periodic_update).start()
+        threading.Timer(0.5, periodic_update).start()
 
     #------
     #イベントの登録
@@ -221,7 +221,7 @@ def main(page: ft.Page):
     #起動後の処理
     #------
     page.go(page.route)
-   #periodic_update()
+    periodic_update()
     
 #アプリの開始
 ft.app(target=main)
