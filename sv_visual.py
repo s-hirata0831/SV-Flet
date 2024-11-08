@@ -4,6 +4,10 @@ import asyncio
 import websockets
 import json
 
+#表示画面の定義
+global widnow
+window = 0
+
 #------
 #メイン関数
 #------
@@ -114,7 +118,7 @@ def main(page: ft.Page):
                                         size=60,
                                         font_family="font"
                                     ),
-                                    on_click=open_1
+                                    #on_click=open_1
                                 )
                             ],alignment=ft.MainAxisAlignment.CENTER, spacing=0),
                             ft.Row([
@@ -190,7 +194,7 @@ def main(page: ft.Page):
         page.go(top_view.route)
 
     #TOPページへ戻る
-    def open_0(e):
+    def open_0():
         page.views.pop()
         top_view=page.views[0]
         page.go(top_view.route)
@@ -203,32 +207,47 @@ def main(page: ft.Page):
     def open_2():
         page.go("/2")
 
-    def update_data():
-        async def receive_json():
-            uri= "ws://153.121.41.11:8765"
-            try:
-                async with websockets.connect(uri) as websocket:
-                    await websocket.send("Requesting data")
+    #------ WebSocketデータ更新の関数
+    async def update_data():
+        global window
+        uri = "ws://153.121.41.11:8765"
+        try:
+            async with websockets.connect(uri) as websocket:
+                await websocket.send("Requesting data")
+                response = await websocket.recv()
+                data = json.loads(response)
+                item = data[0]['id']
+                print(f"データ受信: {item}")
 
-                    response = await websocket.recv()
-                    data = json.loads(response)
-                    item = data[0]['id']
+                # idがある場合にページ遷移
+                if isinstance(data, list) and len(data) > 0 and 'id' in data[0]:
+                    if int(item) == 1 and window != 1:
+                        print("１を表示します")
+                        window = 1
+                        open_1()
+                    elif int(item) == 2 and window != 2:
+                        print("2を表示します")
+                        window = 2
+                        open_2()
+                else:
+                    print("受信データなし")
 
-                    if isinstance(data, list) and len(data) > 0 and 'id' in data[0]:
-                        f"open_{item}"
-                    else:
-                        print("受信データなし")
+        except Exception as e:
+            print(f"Error: {e}")
 
-            except Exception as e:
-                print(f"Error: {e}")
-                
-        #ページを更新
-        page.update()
+    #------ 定期的にデータ更新
+    async def periodic_update():
+        while True:
+            await update_data()
+            await asyncio.sleep(0.5)
 
-    #0.5秒ごとにデータを更新
-    def periodic_update():
-        update_data()
-        threading.Timer(0.5, periodic_update).start()
+    def run_loop():
+            loop = asyncio.new_event_loop()  # 新しいイベントループを作成
+            asyncio.set_event_loop(loop)  # 現在のスレッドにイベントループを設定
+            loop.run_until_complete(periodic_update())  # 非同期タスクを実行
+
+    # 別スレッドで非同期タスクを実行
+    threading.Thread(target=run_loop, daemon=True).start()
 
     #------
     #イベントの登録
@@ -240,6 +259,7 @@ def main(page: ft.Page):
     #起動後の処理
     #------
     page.go(page.route)
+
     periodic_update()
     
 #アプリの開始
