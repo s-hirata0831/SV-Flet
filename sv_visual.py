@@ -30,7 +30,7 @@ def main(page: ft.Page):
     hum = ft.Text("--%", font_family="font", color="ft.colors.BLACK", size=35)
 
     media=[
-        ft.VideoMedia("/Users/hiratasoma/Documents/SV-Flet/assets/live.mp4")
+        ft.VideoMedia("/Users/hiratasoma/Documents/SV-Flet/assets/SE01_yorozuya.mp4")
     ]
 
     # LIVE
@@ -155,7 +155,7 @@ def main(page: ft.Page):
                 ft.View(
                     "/1",
                     [
-                        page.bottom_appbar
+                        video,                        page.bottom_appbar
                     ],
                     bgcolor=ft.colors.BLUE_300
                 )
