@@ -1,6 +1,8 @@
 import flet as ft
 import threading
-import time
+import asyncio
+import websockets
+import json
 
 #------
 #メイン関数
@@ -194,7 +196,7 @@ def main(page: ft.Page):
         page.go(top_view.route)
 
     #動画
-    def open_1(e):
+    def open_1():
         page.go("/1")
 
     #ライブ画面
@@ -202,7 +204,24 @@ def main(page: ft.Page):
         page.go("/2")
 
     def update_data():
-        
+        async def receive_json():
+            uri= "ws://153.121.41.11:8765"
+            try:
+                async with websockets.connect(uri) as websocket:
+                    await websocket.send("Requesting data")
+
+                    response = await websocket.recv()
+                    data = json.loads(response)
+                    item = data[0]['id']
+
+                    if isinstance(data, list) and len(data) > 0 and 'id' in data[0]:
+                        f"open_{item}"
+                    else:
+                        print("受信データなし")
+
+            except Exception as e:
+                print(f"Error: {e}")
+                
         #ページを更新
         page.update()
 
