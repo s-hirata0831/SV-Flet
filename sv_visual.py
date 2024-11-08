@@ -1,5 +1,6 @@
 import flet as ft
 import threading
+import time
 
 #------
 #メイン関数
@@ -8,7 +9,7 @@ def main(page: ft.Page):
     #------
     #画面サイズ変数
     #------
-    #macBookは1470*956_従来は1920*1080
+    #macBookは1470*956
     WIDTH = 1920
     HEIGHT = 1080
     BAR_HEIGHT = HEIGHT * 0.2
@@ -32,21 +33,6 @@ def main(page: ft.Page):
     media=[
         ft.VideoMedia("assets\SE01_yorozuya.mp4")
     ]
-
-    # LIVE
-    video = ft.Video(
-        expand=True,
-        playlist=media,
-        playlist_mode=ft.PlaylistMode.LOOP,
-        aspect_ratio=16/9,
-        volume=100,
-        autoplay=True,
-        filter_quality=ft.FilterQuality.HIGH,
-        muted=False,
-        on_loaded=lambda e: print("Video loaded successfully!"),
-        on_enter_fullscreen=lambda e: print("Video entered fullscreen"),
-        on_exit_fullscreen=lambda e: print("Video exited fullscreen")
-    )
 
     #温度計を表示
     tmpIm = ft.Image(
@@ -146,16 +132,45 @@ def main(page: ft.Page):
                 bgcolor=ft.colors.BLUE_300
             )
         )
-        #ページ更新
-        page.update()
 
-        #ライブ画面
+        #登場動画
         if page.route == "/1":
             page.views.append(
                 ft.View(
                     "/1",
+                    [                      
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Video(
+                                        expand=True,
+                                        playlist=media,
+                                        playlist_mode=ft.PlaylistMode.NONE,
+                                        aspect_ratio=16/9,
+                                        volume=100,
+                                        autoplay=True,
+                                        filter_quality=ft.FilterQuality.HIGH,
+                                        muted=False,
+                                        on_loaded=lambda e: print("よろずやSE再生"),
+                                        height=HEIGHT,
+                                        width=WIDTH,
+                                        show_controls=False
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLACK
+                )
+            )
+
+        #ライブ配信画面
+        if page.route == "/2":
+            page.views.append(
+                ft.View(
+                    "/2",
                     [
-                        video,                        page.bottom_appbar
+                        page.bottom_appbar
                     ],
                     bgcolor=ft.colors.BLUE_300
                 )
@@ -178,9 +193,13 @@ def main(page: ft.Page):
         top_view=page.views[0]
         page.go(top_view.route)
 
-    #ライブ画面
+    #動画
     def open_1(e):
         page.go("/1")
+
+    #ライブ画面
+    def open_2():
+        page.go("/2")
 
     def update_data():
 
