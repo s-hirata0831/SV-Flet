@@ -44,24 +44,24 @@ def main(page: ft.Page):
         weight=ft.FontWeight.W_900
     )
 
-    media=[
+    SE_yorozuya=[
         ft.VideoMedia("assets\SE01_yorozuya.mp4")
     ]
 
-    #温度計を表示
-    tmpIm = ft.Image(
-        src="tmp.png",
-        height=HEIGHT*0.3,
-        width=WIDTH*0.1,
-        fit=ft.ImageFit.CONTAIN
-    )
-
-    #bottomkAppbar
+    #bottomAppbar[標準]
     page.bottom_appbar = ft.BottomAppBar(
         height=BAR_HEIGHT,
         bgcolor=ft.colors.BLUE_100,
         shape=ft.NotchShape.CIRCULAR,
         content=ft.Row([
+            ft.Column(
+                [
+                    ft.Image(src="vote.png", height=BAR_HEIGHT*0.7)
+                ],
+                alignment=ft.MainAxisAlignment.CENTER,
+                horizontal_alignment=ft.CrossAxisAlignment.START,
+                spacing=0,
+            ),
             ft.Column(
                 [
                     ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
@@ -95,7 +95,57 @@ def main(page: ft.Page):
                     )
                 ]
             )
-        ])
+        ],spacing=0)
+    )
+
+    #bottomAppbar[Artist:よろずや]
+    page.bottom_yorozuya = ft.BottomAppBar(
+        height=BAR_HEIGHT,
+        bgcolor=ft.colors.BLUE_100,
+        shape=ft.NotchShape.CIRCULAR,
+        content=ft.Row([
+            ft.Column(
+                [
+                    ft.Image(src="vote.png", height=BAR_HEIGHT*0.7)
+                ],
+                alignment=ft.MainAxisAlignment.CENTER,
+                horizontal_alignment=ft.CrossAxisAlignment.START,
+                spacing=0,
+            ),
+            ft.Column(
+                [
+                    ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
+                    current_time_text
+                ],
+                alignment=ft.MainAxisAlignment.CENTER,
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER
+            ),
+            ft.Text(
+                "+PLAZA FES ライブ配信中",
+                font_family="font",
+                color=ft.colors.BLACK,
+                size=40,
+                weight=ft.FontWeight.W_900
+            ),
+            ft.Column(
+                [
+                    ft.Text(
+                        "2024/11/8",
+                        font_family="font",
+                        color=ft.colors.BLACK,
+                        size=BAR_HEIGHT*0.4,
+                        weight=ft.FontWeight.W_900
+                    ),
+                    ft.Text(
+                        "11:11",
+                        font_family="font",
+                        color=ft.colors.BLACK,
+                        size=20,
+                        weight=ft.FontWeight.W_900
+                    )
+                ]
+            )
+        ],spacing=0)
     )
 
     #画面表示
@@ -153,7 +203,7 @@ def main(page: ft.Page):
                 )
             )
 
-        #登場動画
+        #SE_よろずや
         if page.route == "/2":
             page.views.append(
                 ft.View(
@@ -164,7 +214,7 @@ def main(page: ft.Page):
                                 ft.Row([
                                     ft.Video(
                                         expand=True,
-                                        playlist=media,
+                                        playlist=SE_yorozuya,
                                         playlist_mode=ft.PlaylistMode.NONE,
                                         aspect_ratio=16/9,
                                         volume=100,
