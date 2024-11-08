@@ -9,8 +9,8 @@ def main(page: ft.Page):
     #画面サイズ変数
     #------
     #macBookは1470*956_従来は1920*1080
-    WIDTH = 1470
-    HEIGHT = 956
+    WIDTH = 1920
+    HEIGHT = 1080
     BAR_HEIGHT = HEIGHT * 0.2
 
     page.title = "SV-Flet for +PLAZA FES"
@@ -20,7 +20,7 @@ def main(page: ft.Page):
     page.window_full_screen = True
     page.window_always_on_top = True
     page.fonts = {
-        "font": "/Users/hiratasoma/Documents/linuxEx/Chapter3/DotGothic16-Regular.ttf"
+        "font": "DotGothic16-Regular.ttf"
     }
 
     #------
@@ -30,7 +30,7 @@ def main(page: ft.Page):
     hum = ft.Text("--%", font_family="font", color="ft.colors.BLACK", size=35)
 
     media=[
-        ft.VideoMedia("/Users/hiratasoma/Documents/SV-Flet/assets/SE01_yorozuya.mp4")
+        ft.VideoMedia("assets\SE01_yorozuya.mp4")
     ]
 
     # LIVE
@@ -116,8 +116,8 @@ def main(page: ft.Page):
                     ft.Container(
                         content=ft.Column([
                             ft.Row([
-                                ft.Image(src="SV-Flet.png", height=HEIGHT*0.7, width=WIDTH*0.4),
-                                ft.Image(src="plazafes.png", height=HEIGHT*0.7, width=WIDTH*0.4)
+                                ft.Image(src="SV-Flet.png", height=HEIGHT*0.6, width=WIDTH*0.4),
+                                ft.Image(src="plazafes.png", height=HEIGHT*0.6, width=WIDTH*0.4)
                             ],alignment=ft.MainAxisAlignment.CENTER, spacing=0),
                             ft.Row([
                                 ft.ElevatedButton(
@@ -138,7 +138,7 @@ def main(page: ft.Page):
                                     weight=ft.FontWeight.W_900
                                 )
                             ],alignment=ft.MainAxisAlignment.CENTER, spacing=0),
-                        ], alignment=ft.MainAxisAlignment.CENTER, spacing=0),
+                        ], alignment=ft.MainAxisAlignment.START, spacing=0),
                         width=WIDTH,
                         height=HEIGHT
                     )
