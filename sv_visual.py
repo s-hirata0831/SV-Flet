@@ -3,6 +3,7 @@ import threading
 import asyncio
 import websockets
 import json
+from datetime import datetime
 
 #表示画面の定義
 global widnow
@@ -33,8 +34,15 @@ def main(page: ft.Page):
     #------
     #表示内容
     #------
-    tmp = ft.Text("--°C", font_family="font", color="ft.colors.BLACK", size=35)
-    hum = ft.Text("--%", font_family="font", color="ft.colors.BLACK", size=35)
+    
+    # 時刻表示用のTextオブジェクトを定義
+    current_time_text = ft.Text(
+        "NowTime",
+        font_family="font",
+        color=ft.colors.BLACK,
+        size=BAR_HEIGHT * 0.25,
+        weight=ft.FontWeight.W_900
+    )
 
     media=[
         ft.VideoMedia("assets\SE01_yorozuya.mp4")
@@ -57,13 +65,7 @@ def main(page: ft.Page):
             ft.Column(
                 [
                     ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
-                    ft.Text(
-                        "10:20",
-                        font_family="font",
-                        color=ft.colors.BLACK,
-                        size=BAR_HEIGHT*0.25,
-                        weight=ft.FontWeight.W_900
-                    )
+                    current_time_text
                 ],
                 alignment=ft.MainAxisAlignment.CENTER,
                 horizontal_alignment=ft.CrossAxisAlignment.CENTER
@@ -139,11 +141,23 @@ def main(page: ft.Page):
             )
         )
 
-        #登場動画
+        #ライブ基本画面
         if page.route == "/1":
             page.views.append(
                 ft.View(
                     "/1",
+                    [
+                        page.bottom_appbar
+                    ],
+                    bgcolor=ft.colors.BLUE_300
+                )
+            )
+
+        #登場動画
+        if page.route == "/2":
+            page.views.append(
+                ft.View(
+                    "/2",
                     [                      
                         ft.Container(
                             content=ft.Column([
@@ -167,18 +181,6 @@ def main(page: ft.Page):
                         )
                     ],
                     bgcolor=ft.colors.BLACK
-                )
-            )
-
-        #ライブ配信画面
-        if page.route == "/2":
-            page.views.append(
-                ft.View(
-                    "/2",
-                    [
-                        page.bottom_appbar
-                    ],
-                    bgcolor=ft.colors.BLUE_300
                 )
             )
 
@@ -207,6 +209,15 @@ def main(page: ft.Page):
     def open_2():
         page.go("/2")
 
+    
+    # 現在時刻を更新する関数
+    def update_time():
+        # 現在の時刻を取得してフォーマット
+        current_time = datetime.now().strftime("%H:%M")
+        current_time_text.value = current_time
+        if current_time_text.page:
+            current_time_text.update()
+
     #------ WebSocketデータ更新の関数
     async def update_data():
         global window
@@ -218,6 +229,8 @@ def main(page: ft.Page):
                 data = json.loads(response)
                 item = data[0]['id']
                 print(f"データ受信: {item}")
+                #時刻取得
+                update_time()
 
                 # idがある場合にページ遷移
                 if isinstance(data, list) and len(data) > 0 and 'id' in data[0]:
