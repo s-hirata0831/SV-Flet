@@ -1076,6 +1076,206 @@ def main(page: ft.Page):
                 )
             )
 
+        SE_murakami=[ft.VideoMedia("assets\SE10_murakami.mp4")]
+        #SE_murakami
+        if page.route == "/20":
+            page.views.append(
+                ft.View(
+                    "/20",
+                    [                      
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Video(
+                                        expand=True,
+                                        playlist=SE_murakami,
+                                        playlist_mode=ft.PlaylistMode.NONE,
+                                        aspect_ratio=16/9,
+                                        volume=100,
+                                        autoplay=True,
+                                        filter_quality=ft.FilterQuality.HIGH,
+                                        muted=False,
+                                        on_loaded=lambda e: print("murakami SE再生"),
+                                        height=HEIGHT,
+                                        width=WIDTH,
+                                        show_controls=False
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLACK
+                )
+            )
+
+        #Art:HOLIC
+        if page.route == "/21":
+            page.bottom_appbar = ft.BottomAppBar(
+                height=BAR_HEIGHT,
+                bgcolor=ft.colors.BLUE_100,
+                shape=ft.NotchShape.CIRCULAR,
+                content=ft.Row([
+                    ft.Column([
+                        ft.Image(src="vote.png", height=BAR_HEIGHT*0.7)
+                    ],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.START,
+                    spacing=0
+                    ),
+                    ft.Column(
+                        [
+                            ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
+                            current_time_text
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        spacing=0
+                    ),
+                    ft.Image(src="Art_murakami.png"),
+                    ft.Column(
+                        [
+                            ft.Text(
+                                "<<Artist>>",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=40,
+                                weight=ft.FontWeight.W_900
+                            ),
+                            ft.Text(
+                                "村上春樹",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=BAR_HEIGHT*0.4,
+                                weight=ft.FontWeight.W_900
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.START,
+                        spacing=0
+                    ),
+                    
+                ])
+            )
+
+            page.views.append(
+                ft.View(
+                    "/21",
+                    [
+                        page.bottom_appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Image(src="plazafes.png")
+                                ],
+                                alignment=ft.MainAxisAlignment.CENTER,)
+                            ],
+                            horizontal_alignment=ft.CrossAxisAlignment.CENTER)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLUE_300
+                )
+            )
+
+        SE_rotasu=[ft.VideoMedia("assets\SE11_rotasu.mp4")]
+        #SE_rotasu
+        if page.route == "/22":
+            page.views.append(
+                ft.View(
+                    "/22",
+                    [                      
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Video(
+                                        expand=True,
+                                        playlist=SE_rotasu,
+                                        playlist_mode=ft.PlaylistMode.NONE,
+                                        aspect_ratio=16/9,
+                                        volume=100,
+                                        autoplay=True,
+                                        filter_quality=ft.FilterQuality.HIGH,
+                                        muted=False,
+                                        on_loaded=lambda e: print("rotasu SE再生"),
+                                        height=HEIGHT,
+                                        width=WIDTH,
+                                        show_controls=False
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLACK
+                )
+            )
+
+        #Art:rotasu
+        if page.route == "/23":
+            page.bottom_appbar = ft.BottomAppBar(
+                height=BAR_HEIGHT,
+                bgcolor=ft.colors.BLUE_100,
+                shape=ft.NotchShape.CIRCULAR,
+                content=ft.Row([
+                    ft.Column([
+                        ft.Image(src="vote.png", height=BAR_HEIGHT*0.7)
+                    ],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.START,
+                    spacing=0
+                    ),
+                    ft.Column(
+                        [
+                            ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
+                            current_time_text
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        spacing=0
+                    ),
+                    ft.Image(src="Art_rotasu.png"),
+                    ft.Column(
+                        [
+                            ft.Text(
+                                "<<Artist>>",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=40,
+                                weight=ft.FontWeight.W_900
+                            ),
+                            ft.Text(
+                                "ロータス",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=BAR_HEIGHT*0.4,
+                                weight=ft.FontWeight.W_900
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.START,
+                        spacing=0
+                    ),
+                    
+                ])
+            )
+
+            page.views.append(
+                ft.View(
+                    "/23",
+                    [
+                        page.bottom_appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Image(src="plazafes.png")
+                                ],
+                                alignment=ft.MainAxisAlignment.CENTER,)
+                            ],
+                            horizontal_alignment=ft.CrossAxisAlignment.CENTER)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLUE_300
+                )
+            )
+
         page.update()
 
     #------
@@ -1168,6 +1368,22 @@ def main(page: ft.Page):
     #Art:nose
     def open_19():
         page.go("/19")
+
+    #SE_murakami
+    def open_20():
+        page.go("/20")
+
+    #Art:murakami
+    def open_21():
+        page.go("/21")
+        
+    #SE_rotasu
+    def open_22():
+        page.go("/22")
+
+    #Art:rotasu
+    def open_23():
+        page.go("/23")
     
     # 現在時刻を更新する関数
     def update_time():
@@ -1269,6 +1485,22 @@ def main(page: ft.Page):
                         print("19を表示します")
                         window = 19
                         open_19()
+                    elif int(item) == 20 and window != 20:
+                        print("20を表示します")
+                        window = 20
+                        open_20()
+                    elif int(item) == 21 and window != 21:
+                        print("21を表示します")
+                        window = 21
+                        open_21()
+                    elif int(item) == 22 and window != 22:
+                        print("22を表示します")
+                        window = 22
+                        open_22()
+                    elif int(item) == 23 and window != 23:
+                        print("23を表示します")
+                        window = 23
+                        open_23()
                 else:
                     print("受信データなし")
 
