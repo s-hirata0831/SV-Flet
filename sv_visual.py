@@ -1276,8 +1276,8 @@ def main(page: ft.Page):
                 )
             )
 
-        crash=[ft.VideoMedia("assets\SE01_yorozuya.mp4")]
-        #noMusic:crash
+        crash=[ft.VideoMedia("assets\musicCrash.mp4")]
+        #Music:crash
         if page.route == "/24":
             page.bottom_appbar = ft.BottomAppBar(
                 height=BAR_HEIGHT,
@@ -1338,6 +1338,330 @@ def main(page: ft.Page):
                                     ft.Video(
                                         expand=True,
                                         playlist=crash,
+                                        playlist_mode=ft.PlaylistMode.NONE,
+                                        aspect_ratio=16/9,
+                                        volume=100,
+                                        autoplay=True,
+                                        filter_quality=ft.FilterQuality.HIGH,
+                                        muted=False,
+                                        on_loaded=lambda e: print("rotasu SE再生"),
+                                        height=HEIGHT,
+                                        width=WIDTH,
+                                        show_controls=False
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLUE_300
+                )
+            )
+        
+        rosette=[ft.VideoMedia("assets\musicRosette.mp4")]
+        #Music:crash
+        if page.route == "/25":
+            page.bottom_appbar = ft.BottomAppBar(
+                height=BAR_HEIGHT,
+                bgcolor=ft.colors.BLUE_100,
+                shape=ft.NotchShape.CIRCULAR,
+                content=ft.Row([
+                    ft.Column([
+                        ft.Image(src="vote.png", height=BAR_HEIGHT*0.7)
+                    ],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.START,
+                    spacing=0
+                    ),
+                    ft.Column(
+                        [
+                            ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
+                            current_time_text
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        spacing=0
+                    ),
+                    ft.Image(src="Dan_rosette.png"),
+                    ft.Column(
+                        [
+                            ft.Text(
+                                "<<Artist>>",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=40,
+                                weight=ft.FontWeight.W_900
+                            ),
+                            ft.Text(
+                                "Rosette",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=BAR_HEIGHT*0.4,
+                                weight=ft.FontWeight.W_900
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.START,
+                        spacing=0
+                    ),
+                    
+                ])
+            )
+
+            page.views.append(
+                ft.View(
+                    "/25",
+                    [
+                        page.bottom_appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Image(src="plazafes.png"),
+                                    ft.Video(
+                                        expand=True,
+                                        playlist=rosette,
+                                        playlist_mode=ft.PlaylistMode.NONE,
+                                        aspect_ratio=16/9,
+                                        volume=100,
+                                        autoplay=True,
+                                        filter_quality=ft.FilterQuality.HIGH,
+                                        muted=False,
+                                        on_loaded=lambda e: print("rosette SE再生"),
+                                        height=HEIGHT,
+                                        width=WIDTH,
+                                        show_controls=False
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLUE_300
+                )
+            )
+
+        toxic=[ft.VideoMedia("assets\musicToxic.mp4")]
+        #Music:toxic
+        if page.route == "/26":
+            page.bottom_appbar = ft.BottomAppBar(
+                height=BAR_HEIGHT,
+                bgcolor=ft.colors.BLUE_100,
+                shape=ft.NotchShape.CIRCULAR,
+                content=ft.Row([
+                    ft.Column([
+                        ft.Image(src="vote.png", height=BAR_HEIGHT*0.7)
+                    ],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.START,
+                    spacing=0
+                    ),
+                    ft.Column(
+                        [
+                            ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
+                            current_time_text
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        spacing=0
+                    ),
+                    ft.Image(src="Dan_toxic.png"),
+                    ft.Column(
+                        [
+                            ft.Text(
+                                "<<Artist>>",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=40,
+                                weight=ft.FontWeight.W_900
+                            ),
+                            ft.Text(
+                                "toxic",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=BAR_HEIGHT*0.4,
+                                weight=ft.FontWeight.W_900
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.START,
+                        spacing=0
+                    ),
+                    
+                ])
+            )
+
+            page.views.append(
+                ft.View(
+                    "/26",
+                    [
+                        page.bottom_appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Image(src="plazafes.png"),
+                                    ft.Video(
+                                        expand=True,
+                                        playlist=toxic,
+                                        playlist_mode=ft.PlaylistMode.NONE,
+                                        aspect_ratio=16/9,
+                                        volume=100,
+                                        autoplay=True,
+                                        filter_quality=ft.FilterQuality.HIGH,
+                                        muted=False,
+                                        on_loaded=lambda e: print("toxic SE再生"),
+                                        height=HEIGHT,
+                                        width=WIDTH,
+                                        show_controls=False
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLUE_300
+                )
+            )
+
+        kosuke=[ft.VideoMedia("assets\musicKosuke.mp4")]
+        #Music:kosuke
+        if page.route == "/27":
+            page.bottom_appbar = ft.BottomAppBar(
+                height=BAR_HEIGHT,
+                bgcolor=ft.colors.BLUE_100,
+                shape=ft.NotchShape.CIRCULAR,
+                content=ft.Row([
+                    ft.Column([
+                        ft.Image(src="vote.png", height=BAR_HEIGHT*0.7)
+                    ],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.START,
+                    spacing=0
+                    ),
+                    ft.Column(
+                        [
+                            ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
+                            current_time_text
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        spacing=0
+                    ),
+                    ft.Image(src="Dan_crash.png"),
+                    ft.Column(
+                        [
+                            ft.Text(
+                                "<<Artist>>",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=40,
+                                weight=ft.FontWeight.W_900
+                            ),
+                            ft.Text(
+                                "こーすけ",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=BAR_HEIGHT*0.4,
+                                weight=ft.FontWeight.W_900
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.START,
+                        spacing=0
+                    ),
+                    
+                ])
+            )
+
+            page.views.append(
+                ft.View(
+                    "/27",
+                    [
+                        page.bottom_appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Image(src="plazafes.png"),
+                                    ft.Video(
+                                        expand=True,
+                                        playlist=kosuke,
+                                        playlist_mode=ft.PlaylistMode.NONE,
+                                        aspect_ratio=16/9,
+                                        volume=100,
+                                        autoplay=True,
+                                        filter_quality=ft.FilterQuality.HIGH,
+                                        muted=False,
+                                        on_loaded=lambda e: print("rotasu SE再生"),
+                                        height=HEIGHT,
+                                        width=WIDTH,
+                                        show_controls=False
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLUE_300
+                )
+            )
+
+        joker=[ft.VideoMedia("assets\musicJoker.mp4")]
+        #Music:joker
+        if page.route == "/28":
+            page.bottom_appbar = ft.BottomAppBar(
+                height=BAR_HEIGHT,
+                bgcolor=ft.colors.BLUE_100,
+                shape=ft.NotchShape.CIRCULAR,
+                content=ft.Row([
+                    ft.Column([
+                        ft.Image(src="vote.png", height=BAR_HEIGHT*0.7)
+                    ],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.START,
+                    spacing=0
+                    ),
+                    ft.Column(
+                        [
+                            ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
+                            current_time_text
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        spacing=0
+                    ),
+                    ft.Image(src="Dan_joker.png"),
+                    ft.Column(
+                        [
+                            ft.Text(
+                                "<<Artist>>",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=40,
+                                weight=ft.FontWeight.W_900
+                            ),
+                            ft.Text(
+                                "JOKER",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=BAR_HEIGHT*0.4,
+                                weight=ft.FontWeight.W_900
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.START,
+                        spacing=0
+                    ),
+                    
+                ])
+            )
+
+            page.views.append(
+                ft.View(
+                    "/28",
+                    [
+                        page.bottom_appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Image(src="plazafes.png"),
+                                    ft.Video(
+                                        expand=True,
+                                        playlist=joker,
                                         playlist_mode=ft.PlaylistMode.NONE,
                                         aspect_ratio=16/9,
                                         volume=100,
@@ -1470,6 +1794,22 @@ def main(page: ft.Page):
     def open_24():
         page.go("/24")
     
+    #noMusic:Rosette
+    def open_25():
+        page.go("/25")
+
+    #noMusic:toxic
+    def open_26():
+        page.go("/26")
+
+    #noMusic:こーすけ
+    def open_27():
+        page.go("/27")
+
+    #noMusic:JOKER
+    def open_28():
+        page.go("/28")
+    
     # 現在時刻を更新する関数
     def update_time():
         # 現在の時刻を取得してフォーマット
@@ -1589,6 +1929,18 @@ def main(page: ft.Page):
                     elif int(item) == 24 and window != 24:
                         window = 24
                         open_24()
+                    elif int(item) == 25 and window != 25:
+                        window = 25
+                        open_25()
+                    elif int(item) == 26 and window != 26:
+                        window = 26
+                        open_26()
+                    elif int(item) == 27 and window != 27:
+                        window = 27
+                        open_27()
+                    elif int(item) == 28 and window != 28:
+                        window = 28
+                        open_28()
                 else:
                     print("受信データなし")
 
