@@ -1276,7 +1276,7 @@ def main(page: ft.Page):
                 )
             )
 
-        crash=[ft.VideoMedia("assets\Dan_crash.mp3")]
+        crash=[ft.VideoMedia("assets\SE01_yorozuya.mp4")]
         #noMusic:crash
         if page.route == "/24":
             page.bottom_appbar = ft.BottomAppBar(
