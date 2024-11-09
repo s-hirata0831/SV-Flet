@@ -1543,7 +1543,7 @@ def main(page: ft.Page):
                         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                         spacing=0
                     ),
-                    ft.Image(src="Dan_crash.png"),
+                    ft.Image(src="Dan_kosuke.png"),
                     ft.Column(
                         [
                             ft.Text(
