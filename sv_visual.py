@@ -1276,6 +1276,74 @@ def main(page: ft.Page):
                 )
             )
 
+        #noMusic:crash
+        if page.route == "/24":
+            page.bottom_appbar = ft.BottomAppBar(
+                height=BAR_HEIGHT,
+                bgcolor=ft.colors.BLUE_100,
+                shape=ft.NotchShape.CIRCULAR,
+                content=ft.Row([
+                    ft.Column([
+                        ft.Image(src="vote.png", height=BAR_HEIGHT*0.7)
+                    ],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    horizontal_alignment=ft.CrossAxisAlignment.START,
+                    spacing=0
+                    ),
+                    ft.Column(
+                        [
+                            ft.Image(src="live.gif", height=BAR_HEIGHT*0.4),
+                            current_time_text
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                        spacing=0
+                    ),
+                    ft.Image(src="Dan_crash.png"),
+                    ft.Column(
+                        [
+                            ft.Text(
+                                "<<Artist>>",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=40,
+                                weight=ft.FontWeight.W_900
+                            ),
+                            ft.Text(
+                                "CRASH",
+                                font_family="maru",
+                                color=ft.colors.BLACK,
+                                size=BAR_HEIGHT*0.4,
+                                weight=ft.FontWeight.W_900
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        horizontal_alignment=ft.CrossAxisAlignment.START,
+                        spacing=0
+                    ),
+                    
+                ])
+            )
+
+            page.views.append(
+                ft.View(
+                    "/24",
+                    [
+                        page.bottom_appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Image(src="plazafes.png")
+                                ],
+                                alignment=ft.MainAxisAlignment.CENTER,)
+                            ],
+                            horizontal_alignment=ft.CrossAxisAlignment.CENTER)
+                        )
+                    ],
+                    bgcolor=ft.colors.BLUE_300
+                )
+            )
+
         page.update()
 
     #------
@@ -1384,6 +1452,10 @@ def main(page: ft.Page):
     #Art:rotasu
     def open_23():
         page.go("/23")
+
+    #noMusic:crash
+    def open_24():
+        page.go("/24")
     
     # 現在時刻を更新する関数
     def update_time():
@@ -1501,6 +1573,9 @@ def main(page: ft.Page):
                         print("23を表示します")
                         window = 23
                         open_23()
+                    elif int(item) == 24 and window != 24:
+                        window = 24
+                        open_24()
                 else:
                     print("受信データなし")
 
