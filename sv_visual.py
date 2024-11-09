@@ -1276,6 +1276,7 @@ def main(page: ft.Page):
                 )
             )
 
+        crash=[ft.VideoMedia("assets\Dan_crash.mp3")]
         #noMusic:crash
         if page.route == "/24":
             page.bottom_appbar = ft.BottomAppBar(
@@ -1333,11 +1334,23 @@ def main(page: ft.Page):
                         ft.Container(
                             content=ft.Column([
                                 ft.Row([
-                                    ft.Image(src="plazafes.png")
-                                ],
-                                alignment=ft.MainAxisAlignment.CENTER,)
-                            ],
-                            horizontal_alignment=ft.CrossAxisAlignment.CENTER)
+                                    ft.Image(src="plazafes.png"),
+                                    ft.Video(
+                                        expand=True,
+                                        playlist=crash,
+                                        playlist_mode=ft.PlaylistMode.NONE,
+                                        aspect_ratio=16/9,
+                                        volume=100,
+                                        autoplay=True,
+                                        filter_quality=ft.FilterQuality.HIGH,
+                                        muted=False,
+                                        on_loaded=lambda e: print("rotasu SE再生"),
+                                        height=HEIGHT,
+                                        width=WIDTH,
+                                        show_controls=False
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
                         )
                     ],
                     bgcolor=ft.colors.BLUE_300
